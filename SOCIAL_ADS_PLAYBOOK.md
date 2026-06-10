@@ -1,6 +1,6 @@
 # Social Ads Playbook
 
-This is the practical operating guide behind the Northbeam Creative site.
+This is the practical operating guide behind the Eros site.
 
 ## 1. Pick a Clear Starting Offer
 

@@ -1,14 +1,16 @@
 :root {
-  --bg: #ffffff;
-  --ink: #101114;
-  --muted: #5d626b;
-  --line: #e5e7eb;
-  --soft: #f6f9fa;
-  --cyan: #00a6c8;
-  --cyan-soft: #e9f8fb;
-  --coral: #ff4d3d;
-  --coral-dark: #d93628;
-  --shadow: 0 22px 60px rgba(16, 17, 20, 0.08);
+  --bg: #050506;
+  --surface: #0b0c0f;
+  --surface-2: #111318;
+  --ink: #f7f7f2;
+  --muted: #a2a6ad;
+  --line: rgba(255, 255, 255, 0.12);
+  --soft: #121419;
+  --cyan: #00d4f5;
+  --cyan-soft: rgba(0, 212, 245, 0.12);
+  --coral: #ff3838;
+  --coral-dark: #d9272f;
+  --shadow: 0 24px 70px rgba(0, 0, 0, 0.42);
   --radius: 8px;
   --max: 1180px;
 }
@@ -23,7 +25,10 @@ html {
 
 body {
   margin: 0;
-  background: var(--bg);
+  background:
+    radial-gradient(circle at 82% 8%, rgba(255, 56, 56, 0.11), transparent 24rem),
+    radial-gradient(circle at 8% 38%, rgba(0, 212, 245, 0.09), transparent 22rem),
+    var(--bg);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   line-height: 1.5;
@@ -53,7 +58,7 @@ textarea {
   top: -80px;
   z-index: 20;
   background: var(--ink);
-  color: #fff;
+  color: var(--bg);
   padding: 10px 14px;
   border-radius: var(--radius);
 }
@@ -81,8 +86,8 @@ textarea {
   gap: 24px;
   min-height: 86px;
   padding: 0 max(24px, calc((100vw - var(--max)) / 2));
-  background: rgba(255, 255, 255, 0.92);
-  border-bottom: 1px solid rgba(229, 231, 235, 0.82);
+  background: rgba(5, 5, 6, 0.88);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(14px);
 }
 
@@ -92,6 +97,7 @@ textarea {
   gap: 10px;
   font-size: 20px;
   font-weight: 800;
+  letter-spacing: 0.02em;
 }
 
 .brand-mark {
@@ -99,9 +105,10 @@ textarea {
   height: 22px;
   border-radius: 6px;
   background:
-    linear-gradient(115deg, transparent 0 36%, var(--cyan) 36% 54%, transparent 54%),
+    linear-gradient(115deg, transparent 0 34%, var(--cyan) 34% 51%, transparent 51%),
     linear-gradient(115deg, transparent 0 52%, var(--coral) 52% 70%, transparent 70%),
-    var(--ink);
+    #f7f7f2;
+  box-shadow: 0 0 22px rgba(255, 56, 56, 0.18);
 }
 
 .site-nav {
@@ -158,14 +165,14 @@ textarea {
   font-size: 15px;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(255, 77, 61, 0.22);
+  box-shadow: 0 14px 34px rgba(255, 56, 56, 0.28);
   transition: transform 180ms ease, background 180ms ease, box-shadow 180ms ease;
 }
 
 .button:hover {
   transform: translateY(-2px);
   background: var(--coral-dark);
-  box-shadow: 0 16px 30px rgba(255, 77, 61, 0.26);
+  box-shadow: 0 18px 38px rgba(255, 56, 56, 0.32);
 }
 
 .button-small {
@@ -244,11 +251,21 @@ textarea {
 }
 
 .hero-media {
+  position: relative;
   min-height: 520px;
   align-self: end;
   clip-path: polygon(18% 0, 100% 0, 100% 100%, 0 100%);
   overflow: hidden;
   background: var(--soft);
+  box-shadow: var(--shadow);
+}
+
+.hero-media::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5, 5, 6, 0.22), transparent 52%);
+  content: "";
+  pointer-events: none;
 }
 
 .hero-media img {
@@ -256,6 +273,7 @@ textarea {
   height: 100%;
   min-height: 520px;
   object-fit: cover;
+  filter: saturate(1.08) contrast(1.08);
 }
 
 .section-heading {
@@ -297,6 +315,7 @@ textarea {
   min-height: 230px;
   padding: 38px 30px 34px;
   border-right: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.01));
 }
 
 .service-card:last-child {
@@ -354,7 +373,7 @@ textarea {
   position: absolute;
   top: 13px;
   right: -22px;
-  color: var(--ink);
+  color: var(--muted);
   content: "->";
 }
 
@@ -378,6 +397,7 @@ textarea {
   border-radius: var(--radius);
   object-fit: cover;
   box-shadow: var(--shadow);
+  border: 1px solid var(--line);
 }
 
 .overline {
@@ -478,7 +498,7 @@ textarea {
   padding: 30px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: #fff;
+  background: var(--surface);
 }
 
 .tier-grid,
@@ -507,6 +527,7 @@ textarea {
   padding: 28px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  background: var(--surface);
 }
 
 .case-feature img,
@@ -524,11 +545,11 @@ textarea {
 }
 
 .cyan-block {
-  background: var(--cyan-soft);
+  background: linear-gradient(145deg, rgba(0, 212, 245, 0.15), rgba(255, 255, 255, 0.03));
 }
 
 .coral-block {
-  background: #fff0ee;
+  background: linear-gradient(145deg, rgba(255, 56, 56, 0.17), rgba(255, 255, 255, 0.03));
 }
 
 .case-color-block span {
@@ -626,10 +647,15 @@ textarea {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 6px;
-  background: #fff;
+  background: var(--surface);
   color: var(--ink);
   padding: 13px 14px;
   font-size: 15px;
+}
+
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #777d87;
 }
 
 .contact-form textarea {
@@ -657,7 +683,8 @@ textarea {
 .quick-card {
   padding: 24px;
   border-radius: var(--radius);
-  background: var(--soft);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
 }
 
 .contact-card a {
@@ -670,6 +697,7 @@ textarea {
 .contact-aside img {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
+  border: 1px solid var(--line);
 }
 
 .playbook-layout {
@@ -720,6 +748,7 @@ textarea {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
+  background: var(--surface);
 }
 
 .guide-grid strong,
@@ -808,7 +837,7 @@ textarea {
     height: 44px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: #fff;
+    background: var(--surface);
     color: var(--ink);
   }
 
@@ -828,7 +857,7 @@ textarea {
     padding: 18px;
     border: 1px solid var(--line);
     border-radius: var(--radius);
-    background: #fff;
+    background: var(--surface);
     box-shadow: var(--shadow);
   }
 

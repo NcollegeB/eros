@@ -24,7 +24,7 @@ if (contactForm) {
     const status = contactForm.querySelector(".form-status");
     const formData = new FormData(contactForm);
     const name = formData.get("name") || "there";
-    status.textContent = `Thanks, ${name}. Your message is ready for the Northbeam team.`;
+    status.textContent = `Thanks, ${name}. Your message is ready for the Eros team.`;
     contactForm.reset();
   });
 }
